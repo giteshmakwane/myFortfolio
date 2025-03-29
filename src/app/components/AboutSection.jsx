@@ -1,100 +1,38 @@
 "use client";
-import React, { useTransition, useState } from "react";
-import Image from "next/image";
-import TabButton from "./TabButton";
-
-const TAB_DATA = [
-  {
-    title: "Skills",
-    id: "skills",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>JavaScript</li>
-        <li>ReactJS</li>
-        <li>NextJS</li>
-        <li>Firebase</li>
-        <li>Digital Image Processing using Python</li>
-        <li>Java</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Education",
-    id: "education",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Ramjas School, Delhi</li>
-        <li>Shiv Nadar University, Delhi NCR</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Certifications",
-    id: "certifications",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Meta certified Front End Developer</li>
-        <li>Certification in Supervised Machine Learning: Regression and Classification, by DeepLearning.AI </li>
-        <li>Certification in AI with ML by IIT ROORKEE</li>
-      </ul>
-    ),
-  },
-];
+import React from "react";
+import { motion } from "framer-motion";
 
 const AboutSection = () => {
-  const [tab, setTab] = useState("skills");
-  const [isPending, startTransition] = useTransition();
-
-  const handleTabChange = (id) => {
-    startTransition(() => {
-      setTab(id);
-    });
-  };
-
   return (
-    <section className="text-white" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/aboutme.jpeg" width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
-          <p className="text-base lg:text-lg">
-            I am a full stack web developer with a passion for creating
-            interactive and responsive web applications. I have experience
-            working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-            Sequelize, HTML, CSS, and Git. I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am a team player and
-            I am excited to work with others to create amazing applications.
+    <section className="relative text-white py-16 px-6 sm:px-12 lg:px-24 flex flex-col items-center text-center">
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-[#181818] to-[#0d0d0d] opacity-60"
+        animate={{ opacity: [0.6, 0.8, 0.6] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="relative z-10 max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
+          <p className="text-lg text-gray-300 leading-relaxed">
+            I'm a passionate Full-Stack Developer skilled in JavaScript, React, Node.js, and databases. 
+            I love crafting clean, efficient, and scalable web applications.  
+            Always eager to learn and explore new technologies, I believe in building impactful digital experiences.  
+            Let’s create something amazing together
           </p>
-          <div className="flex flex-row justify-start mt-8">
-            <TabButton
-              selectTab={() => handleTabChange("skills")}
-              active={tab === "skills"}
-            >
-              {" "}
-              Skills{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("education")}
-              active={tab === "education"}
-            >
-              {" "}
-              Education{" "}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("certifications")}
-              active={tab === "certifications"}
-            >
-              {" "}
-              Certifications{" "}
-            </TabButton>
-          </div>
-          <div className="mt-8">
-            {TAB_DATA.find((t) => t.id === tab).content}
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default AboutSection;
+
+
+
+
+

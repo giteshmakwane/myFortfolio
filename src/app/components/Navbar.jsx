@@ -15,6 +15,10 @@ const navLinks = [
     path: "#projects",
   },
   {
+    title: "Skills",
+    path: "#skills", // Updated to match the section ID
+  },
+  {
     title: "Contact",
     path: "#contact",
   },
@@ -28,9 +32,9 @@ const Navbar = () => {
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
-          className="text-2xl md:text-5xl text-white font-semibold"
+          className="text-2xl md:text-5xl text-white font-mono font-semibold"
         >
-          Kunal Passan
+          Gitesh Makwane
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
@@ -50,7 +54,7 @@ const Navbar = () => {
           )}
         </div>
         <div className="menu hidden md:block md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
+          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 font-serif">
             {navLinks.map((link, index) => (
               <li key={index}>
                 <NavLink href={link.path} title={link.title} />
@@ -65,3 +69,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

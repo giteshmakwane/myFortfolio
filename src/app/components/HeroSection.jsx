@@ -4,74 +4,68 @@ import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
-// import resume from "../../../public/images/Resum.pdf"
-
 
 const HeroSection = () => {
   return (
-    <section className="lg:py-24">
-      <div className="grid grid-cols-1 sm:grid-cols-12">
+    <section className="flex items-center justify-center min-h-screen px-4 lg:px-24 text-center sm:text-left">
+      <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 sm:gap-16 items-center">
+        {/* Text Section */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
+          className="col-span-12 sm:col-span-7 flex flex-col items-center sm:items-start"
         >
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
-            <span className="text-white bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              Hello, I&apos;m{" "}
+          <h1 className="text-white mb-4 text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-extrabold leading-snug">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+              Hello, I&apos;m
             </span>
-            <br></br>
+            <br />
             <TypeAnimation
-              sequence={[
-                "Kunal Passan",
-                2000,
-                "AI Developer", //ai developer features coming soon
-                2000,
-                "UI/UX Designer",
-                2000,
-                "Data Analyst",
-                2000,
-              ]}
-
+              sequence={["Gitesh Makwane", "Fullstack Developer"]}
               wrapper="span"
-              speed={50}
+              speed={200}
               repeat={Infinity}
+              className="text-blue-400"
             />
           </h1>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-          Innovative Next.js developer crafting high-performance web solutions in Gurugram, Haryana. Specializing in websites that elevate online presence and drive business growth.
+          <p className="text-gray-300 text-sm sm:text-base lg:text-lg mb-6 max-w-lg">
+            Transforming Ideas into Stunning Web Experiences.
           </p>
-          <div>
+          <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
             <Link
               href="/#projects"
-              className="px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3">
+              className="px-6 inline-block py-3 w-full sm:w-auto rounded-full bg-blue-500 hover:bg-blue-600 text-white"
+            >
               My Projects
             </Link>
             <Link
-              href="resume_ats.pdf"  target="_blank"
-              className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3"
+              href="Gitesh_Makwane_resume.pdf"
+              target="_blank"
+              className="px-6 inline-block py-3 w-full sm:w-auto rounded-full bg-purple-500 hover:bg-purple-600 text-white"
             >
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
-                Download CV
-              </span>
+              Download CV
             </Link>
           </div>
         </motion.div>
+
+        {/* Image Section */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="col-span-4 place-self-center mt-4 lg:mt-0"
+          className="col-span-12 sm:col-span-5 flex justify-center sm:justify-end"
         >
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
-            <Image
-              src="/images/avatar_aigen.png"
-              alt="hero image"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={500}
-              height={400}
-            />
+          <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 p-1">
+            <div className="w-full h-full rounded-full overflow-hidden">
+              <Image
+                src="/images/anime.jpg"
+                alt="hero image"
+                className="object-cover rounded-full"
+                layout="fill"
+                objectPosition="center"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
@@ -80,3 +74,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+

@@ -1,135 +1,72 @@
-"use client";
-import React, { useState } from "react";
-import GithubIcon from "../../../public/github-icon.svg";
-import LinkedinIcon from "../../../public/linkedin-icon.svg";
-import MailIcon from "../../../public/gmail.png";
+"use client"; // Ensures it's a Client Component
+
+import React from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
+// Animation Variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
 const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = {
-      access_key: "77857d85-8d56-4e25-9c13-7247134d2421",
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        setEmailSubmitted(true);
-        console.log("Message sent successfully");
-      }
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
-  };
-
   return (
-    <section
+    <motion.section
       id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 py-8 gap-4 relative"
+      className="flex flex-col items-center text-center py-16 px-6 md:px-12"
+      initial="hidden"
+      animate="visible"
+      variants={fadeInUp}
     >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
-      <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
-        </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          get back to you!
+      {/* Title & Description */}
+      <motion.div className="max-w-2xl" variants={fadeInUp}>
+        <h5 className="text-4xl font-extrabold text-white my-4">Let’s Connect</h5>
+        <p className="text-gray-400 text-lg mb-6">
+          I'm open to new opportunities! Feel free to reach out if you have any questions or just want to say hi.
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/kazekunal">
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/kunal-passan-21548a163/">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
-          </Link>
-          <Link href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlGTtrnWzNVHbcZKhrNsXZzsLWVjSmHSmfSgWJnzjszMNjffBwtxBCWLBmzDfNGnbpSmSq">
-            <Image src={MailIcon} alt="Mail Icon" />
-          </Link>
-        </div>
-      </div>
-      <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="abc@gmail.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary-500 hover:bg-slate-800 text-white font-medium py-2.5 px-5 rounded-lg w-full"
-            >
-              Send Message
-            </button>
-          </form>
-        )}
-      </div>
-    </section>
+      </motion.div>
+
+      {/* Social Icons */}
+      <motion.div className="flex flex-row gap-6" variants={fadeInUp}>
+        {[
+          { href: "https://github.com/kazekunal", src: "/github-icon.svg", alt: "GitHub" },
+          { href: "https://www.linkedin.com/in/kunal-passan-21548a163/", src: "/linkedin-icon.svg", alt: "LinkedIn" },
+          { href: "mailto:your-email@gmail.com", src: "/gmail.png", alt: "Email" },
+        ].map((icon, index) => (
+          <motion.a
+            key={index}
+            href={icon.href}
+            target="_blank"
+            className="p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out 
+                       hover:bg-gray-800 hover:shadow-xl hover:scale-110"
+            whileHover={{ scale: 1.2, rotate: 5 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <Image src={icon.src} alt={icon.alt} width={45} height={45} />
+          </motion.a>
+        ))}
+      </motion.div>
+
+      {/* Call to Action */}
+      <motion.div className="mt-6" variants={fadeInUp}>
+        <motion.a
+          href="mailto:your-email@gmail.com"
+          className="px-8 py-3 text-white text-lg font-semibold rounded-lg shadow-lg 
+                     bg-blue-600 hover:bg-blue-500 transition-all 
+                     duration-300 ease-in-out"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Say Hello 👋
+        </motion.a>
+      </motion.div>
+    </motion.section>
   );
 };
 
 export default EmailSection;
+
+
+
