@@ -19,7 +19,7 @@ const AboutSection = () => {
         >
           <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
           <p className="text-lg text-gray-300 leading-relaxed">
-            I'm a passionate Full-Stack Developer skilled in JavaScript, React, Node.js, and databases. 
+            I am a passionate Full-Stack Developer skilled in JavaScript, React, Node.js, and databases. 
             I love crafting clean, efficient, and scalable web applications.  
             Always eager to learn and explore new technologies, I believe in building impactful digital experiences.  
             Let’s create something amazing together
