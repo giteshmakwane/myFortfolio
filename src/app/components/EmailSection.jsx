@@ -24,7 +24,7 @@ const EmailSection = () => {
       <motion.div className="max-w-2xl" variants={fadeInUp}>
         <h5 className="text-4xl font-extrabold text-white my-4">Let’s Connect</h5>
         <p className="text-gray-400 text-lg mb-6">
-          I'm open to new opportunities! Feel free to reach out if you have any questions or just want to say hi.
+          I am open to new opportunities! Feel free to reach out if you have any questions or just want to say hi.
         </p>
       </motion.div>
 
