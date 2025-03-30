@@ -31,9 +31,9 @@ const EmailSection = () => {
       {/* Social Icons */}
       <motion.div className="flex flex-row gap-6" variants={fadeInUp}>
         {[
-          { href: "https://github.com/kazekunal", src: "/github-icon.svg", alt: "GitHub" },
-          { href: "https://www.linkedin.com/in/kunal-passan-21548a163/", src: "/linkedin-icon.svg", alt: "LinkedIn" },
-          { href: "mailto:your-email@gmail.com", src: "/gmail.png", alt: "Email" },
+          { href: "https://github.com/giteshmakwane", src: "/github-icon.svg", alt: "GitHub" },
+          { href: "https://www.linkedin.com/in/gitesh-makwane-2917b1245", src: "/linkedin-icon.svg", alt: "LinkedIn" },
+          { href: "mailto:giteshmakwane2002@gmail.com", src: "/gmail.png", alt: "Email" },
         ].map((icon, index) => (
           <motion.a
             key={index}
@@ -52,7 +52,7 @@ const EmailSection = () => {
       {/* Call to Action */}
       <motion.div className="mt-6" variants={fadeInUp}>
         <motion.a
-          href="mailto:your-email@gmail.com"
+          href="mailto:giteshmakwane2002@gmail.com"
           className="px-8 py-3 text-white text-lg font-semibold rounded-lg shadow-lg 
                      bg-blue-600 hover:bg-blue-500 transition-all 
                      duration-300 ease-in-out"
